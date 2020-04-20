@@ -1,0 +1,8 @@
+﻿@model FoodCatalogueViewModel
+
+
+<h1>@Model.CurrentClassification</h1>
+@foreach (var food in Model.Foods)
+{
+<partial name="_FoodCard" model="food" />
+}

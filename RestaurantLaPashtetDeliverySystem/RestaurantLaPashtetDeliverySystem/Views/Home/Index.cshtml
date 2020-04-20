@@ -1,0 +1,15 @@
+﻿@model HomeViewModel
+
+<partial name="_Carousel" />
+
+<h2>Popular food</h2>
+<h4>Our very popular food!</h4>
+
+<div class="row">
+
+    @foreach (var food in Model.PopularFood)
+    {
+        <partial name="_FoodCard" model="food" />
+    }
+
+</div>
