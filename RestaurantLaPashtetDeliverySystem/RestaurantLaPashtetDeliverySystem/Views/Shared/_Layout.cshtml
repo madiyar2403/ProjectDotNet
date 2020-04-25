@@ -28,6 +28,8 @@
                     @await Component.InvokeAsync("ShoppingCartSummary")
                     <li><a asp-controller="ShoppingCart" asp-action="Index">Cart</a></li>
                     <li><a asp-controller="Contact" asp-action="Index">Contact</a></li>
+                    <li><a asp-controller="Classification" asp-action="Index">Go to classifications</a></li>
+                    <li><a asp-controller="Foods" asp-action="Index">Go to food</a></li>
                 </ul>
                 <partial name="_LoginPartial" />
             </div>
@@ -45,6 +47,10 @@
             </div>
         </div>
         @RenderSection("Scripts", required: false)
+    <footer>
+        <p style="color: darkslategrey; text-align:center;">All Rights Reserved.© 2020 Madiyar Toktarbekov</p>
+        <p style="color: darkslategrey; text-align:center;">Contact information: madiyar2403@mail.ru</p>
+    </footer>
     </div>
 </body>
 </html>
