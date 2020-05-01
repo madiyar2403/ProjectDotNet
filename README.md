@@ -17,6 +17,7 @@ The main idea (path) of this project is
 - shopping cart(ShoppingCartItemId, food, amount, ShoppingCartId)
 
 Validations
+
 the remote validation
 VerifyName of the property 'Name' of the model 'Food' and the function is in the controller 'FoodController'.This remote validation verifies that the name does not match the existing name in the database.
 
