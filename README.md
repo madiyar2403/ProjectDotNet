@@ -19,8 +19,10 @@ The main idea (path) of this project is
 Validations
 the remote validation
 VerifyName of the property 'Name' of the model 'Food' and the function is in the controller 'FoodController'.This remote validation verifies that the name does not match the existing name in the database.
+
 the custom attriubute validation
 The custom validation attribute is “PriceAttribute”. He checks the “Price” property of the “Food” model, making sure that the price is reliable and does not exceed 100000 and not less than 100, the implementation is in the same model.
+
 the model which implements IValidatableObject
 The model 'ShoppingCartItem' inherits IValidatableObject. Thanks to this IValidatableObject I check ShoppingCartId. 
 Also, the number of items should not exceed 100 and not less than 0.
