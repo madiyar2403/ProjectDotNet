@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace RestaurantLaPashtetDeliverySystem.Models
         [Required(ErrorMessage = "Please enter food's name")]
         [Display(Name = "Name")]
         [StringLength(50)]
+        [Remote("VerifyName", "Food", HttpMethod = "POST", ErrorMessage = "Name of this food already exists in database.")]
         public string Name { get; set; }
         [Required(ErrorMessage = "Please enter food's short description")]
         [Display(Name = "Short Description")]
@@ -20,6 +22,8 @@ namespace RestaurantLaPashtetDeliverySystem.Models
         [Display(Name = "Long Description")]
         public string LongDescription { get; set; }
         [Required(ErrorMessage = "Please enter food's price")]
+        [Range(100, 100000, ErrorMessage = "Please enter correct range between 100 and 100000")]
+        [Price(MinPrice = 100.00)]
         [Display(Name = "Price")]
         public decimal Price { get; set; }
         [Required(ErrorMessage = "Please enter food's image url")]
@@ -29,5 +33,6 @@ namespace RestaurantLaPashtetDeliverySystem.Models
         public bool InStock { get; set; }
         public int ClassificationId { get; set; }
         public Classification Classification { get; set; }
+
     }
 }

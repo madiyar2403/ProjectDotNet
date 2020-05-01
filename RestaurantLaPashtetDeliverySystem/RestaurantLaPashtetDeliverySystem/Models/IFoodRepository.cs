@@ -10,5 +10,6 @@ namespace RestaurantLaPashtetDeliverySystem.Models
         IEnumerable<Food> AllFood { get; }
         IEnumerable<Food> PopularFood { get; }
         Food GetFoodById(int foodId);
+        Food GetFoodByName(string name);
     }
 }

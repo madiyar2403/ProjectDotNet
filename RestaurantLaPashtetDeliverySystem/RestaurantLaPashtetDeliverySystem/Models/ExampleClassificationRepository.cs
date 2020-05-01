@@ -14,5 +14,9 @@ namespace RestaurantLaPashtetDeliverySystem.Models
                     new Classification{ClassificationId=2, ClassificationName="Salads", Description="A salad is a dish consisting of a mixture of small pieces of food, usually vegetables or fruit."},
                     new Classification{ClassificationId=3, ClassificationName="Soups", Description="Soup, what is it? Soup, that's what it is, it's soup."}
         };
+        public Classification GetClassificationByName(string name)
+        {
+            return AllClassifications.FirstOrDefault(p => p.ClassificationName == name);
+        }
     }
 }

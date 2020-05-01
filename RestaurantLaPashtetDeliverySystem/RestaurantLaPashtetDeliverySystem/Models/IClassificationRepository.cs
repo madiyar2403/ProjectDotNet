@@ -8,5 +8,6 @@ namespace RestaurantLaPashtetDeliverySystem.Models
     public interface IClassificationRepository
     {
         IEnumerable<Classification> AllClassifications { get; }
+        Classification GetClassificationByName(string name);
     }
 }

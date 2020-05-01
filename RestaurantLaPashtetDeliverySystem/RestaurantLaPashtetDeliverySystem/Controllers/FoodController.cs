@@ -18,7 +18,37 @@ namespace RestaurantLaPashtetDeliverySystem.Controllers
             _foodRepository = foodRepository;
             _classificationRepository = classificationRepository;
         }
+        [HttpPost]
+        public ActionResult VerifyName(string name)
+        {
+            try
+            {
+                return Json(!IsNameExists(name));
+            }
+            catch (Exception ex)
+            {
+                return Json(false);
+            }
+        }
 
+        private bool IsNameExists(string name)
+            => _foodRepository.GetFoodByName(name) != null;
+
+        [HttpPost]
+        public ActionResult VerifyClassificationName(string name)
+        {
+            try
+            {
+                return Json(!IsClassificationNameExists(name));
+            }
+            catch (Exception ex)
+            {
+                return Json(false);
+            }
+        }
+
+        private bool IsClassificationNameExists(string name)
+            => _classificationRepository.GetClassificationByName(name) != null;
         /*public ViewResult Catalogue() 
         {
             FoodCatalogueViewModel foodCatalogueViewModel = new FoodCatalogueViewModel();

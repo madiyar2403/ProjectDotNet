@@ -24,5 +24,11 @@ namespace RestaurantLaPashtetDeliverySystem.Models
         {
             return AllFood.FirstOrDefault(p => p.FoodId == foodId);
         }
+
+        public Food GetFoodByName(string name)
+        {
+            return AllFood.FirstOrDefault(p => p.Name == name);
+        }
+
     }
 }

@@ -15,5 +15,9 @@ namespace RestaurantLaPashtetDeliverySystem.Models
         }
 
         public IEnumerable<Classification> AllClassifications => _appDbContext.Classifications;
+        public Classification GetClassificationByName(string name)
+        {
+            return _appDbContext.Classifications.FirstOrDefault(p => p.ClassificationName == name);
+        }
     }
 }

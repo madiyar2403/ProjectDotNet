@@ -162,10 +162,12 @@ namespace RestaurantLaPashtetDeliverySystem.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(128)")
+                        .HasMaxLength(128);
 
                     b.Property<string>("ProviderKey")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(128)")
+                        .HasMaxLength(128);
 
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
@@ -202,10 +204,12 @@ namespace RestaurantLaPashtetDeliverySystem.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(128)")
+                        .HasMaxLength(128);
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(128)")
+                        .HasMaxLength(128);
 
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(max)");
@@ -223,6 +227,7 @@ namespace RestaurantLaPashtetDeliverySystem.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("ClassificationName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
@@ -271,16 +276,20 @@ namespace RestaurantLaPashtetDeliverySystem.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("ImageUrl")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("InStock")
                         .HasColumnType("bit");
 
                     b.Property<string>("LongDescription")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
 
                     b.Property<bool>("PopularFood")
                         .HasColumnType("bit");
@@ -289,6 +298,7 @@ namespace RestaurantLaPashtetDeliverySystem.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("ShortDescription")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("FoodId");
@@ -526,10 +536,11 @@ namespace RestaurantLaPashtetDeliverySystem.Migrations
                     b.Property<int>("Amount")
                         .HasColumnType("int");
 
-                    b.Property<int?>("FoodId")
+                    b.Property<int>("FoodId")
                         .HasColumnType("int");
 
                     b.Property<string>("ShoppingCartId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ShoppingCartItemId");
@@ -618,7 +629,9 @@ namespace RestaurantLaPashtetDeliverySystem.Migrations
                 {
                     b.HasOne("RestaurantLaPashtetDeliverySystem.Models.Food", "Food")
                         .WithMany()
-                        .HasForeignKey("FoodId");
+                        .HasForeignKey("FoodId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
