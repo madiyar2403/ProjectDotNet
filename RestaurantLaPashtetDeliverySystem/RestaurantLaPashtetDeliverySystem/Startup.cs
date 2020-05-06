@@ -28,7 +28,10 @@ namespace RestaurantLaPashtetDeliverySystem
         {
             services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<AppDbContext>();
+            //services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<AppDbContext>();
+            services.AddDefaultIdentity<IdentityUser>()
+                            .AddRoles<IdentityRole>()
+                            .AddEntityFrameworkStores<AppDbContext>();
             services.AddScoped<IFoodRepository,FoodRepository>();
             services.AddScoped<IClassificationRepository, ClassificationRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
